@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,10 +38,11 @@
             justify-content: center;
             padding: 40px;
             text-align: center;
-            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.9)), 
-                        url('https://images.unsplash.com/photo-1604998103924-89e012e5265a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(26, 26, 46, 0.85)), 
+                        url('https://github.com/bimal-bp/Query_ppt/blob/main/PIT-3-4-MAIN.jpg?raw=true');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
         }
         
         .home-logo {
@@ -56,7 +56,7 @@
             font-weight: 600;
             color: var(--company-color);
             margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         .home-subtitle {
@@ -65,6 +65,7 @@
             color: var(--accent);
             max-width: 800px;
             line-height: 1.5;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         .nav-buttons {
@@ -87,13 +88,13 @@
             font-weight: 600;
             text-decoration: none;
             min-width: 200px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
         
         .nav-btn:hover {
             background: var(--accent);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
         /* Presentation Styles */
@@ -297,12 +298,13 @@
     <div class="home-container" id="homePage">
         <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="SGX Minerals Logo" class="home-logo">
         <h1 class="home-title">SGX Minerals Pvt Ltd</h1>
-        <h2 class="home-subtitle"> 9 Ha Quarry Presentation</h2>
+        <h2 class="home-subtitle">9 Ha Quarry Presentation</h2>
         
         <div class="nav-buttons">
             <a href="#" class="nav-btn" id="pit1Btn">Pit 1 Status</a>
             <a href="#" class="nav-btn" id="pit2Btn">Pit 2 Status</a>
             <a href="#" class="nav-btn" id="pit3Btn">Pit 3 Status</a>
+            <a href="#" class="nav-btn" id="futurePlanBtn">Future Plans</a>
         </div>
     </div>
     
@@ -372,7 +374,6 @@
             <div class="update-section">
                 <h3>PIT-2 Details</h3>
                 <p>Length – 95 meters, Width – 16 meters, Height – 15 meters</p>
-
             </div>
             
             <hr class="section-divider">
@@ -424,7 +425,6 @@
             <div class="update-section">
                 <h3>PIT-3 Details</h3>
                 <p>Length – 95 meters, Width – 65 meters, Height – 20 meters</p>
-
             </div>
             
             <hr class="section-divider">
@@ -465,6 +465,39 @@
         </div>
     </div>
     
+      <!-- Future Plans Presentation -->
+    <div class="presentation-container" id="futurePlanPresentation">
+        <div class="content-container">
+            <div class="slide-header">
+                <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
+                <h1 class="slide-title">Future Plans & Strategic Roadmap</h1>
+            </div>
+            
+            <div class="update-section">
+                <h3>Previous Month Details</h3>
+                <p>------------------------------------</p>
+
+            </div>
+            
+            <div class="update-section">
+                <h3>Operational Improvements</h3>
+                <p>------------------------------------</p>
+
+            </div>
+            
+            <div class="update-section">
+                <h3>Expansion Strategy</h3>
+                <p>------------------------------------</p>
+  
+            </div>
+            
+            <hr class="section-divider">
+
+            
+            <button class="back-btn">Back to Dashboard</button>
+        </div>
+    </div>
+    
     <!-- Image Modal -->
     <div class="modal" id="imageModal">
         <span class="close-modal">&times;</span>
@@ -479,9 +512,11 @@
         const pit1Btn = document.getElementById('pit1Btn');
         const pit2Btn = document.getElementById('pit2Btn');
         const pit3Btn = document.getElementById('pit3Btn');
+        const futurePlanBtn = document.getElementById('futurePlanBtn');
         const pit1Presentation = document.getElementById('pit1Presentation');
         const pit2Presentation = document.getElementById('pit2Presentation');
         const pit3Presentation = document.getElementById('pit3Presentation');
+        const futurePlanPresentation = document.getElementById('futurePlanPresentation');
         const backBtns = document.querySelectorAll('.back-btn');
         
         // Show presentation function
@@ -490,6 +525,7 @@
             pit1Presentation.style.display = 'none';
             pit2Presentation.style.display = 'none';
             pit3Presentation.style.display = 'none';
+            futurePlanPresentation.style.display = 'none';
             presentation.style.display = 'block';
             document.title = "SGX Minerals - " + presentation.querySelector('.slide-title').textContent;
             window.scrollTo(0, 0);
@@ -511,12 +547,18 @@
             showPresentation(pit3Presentation);
         });
         
+        futurePlanBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPresentation(futurePlanPresentation);
+        });
+        
         backBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 homePage.style.display = 'flex';
                 pit1Presentation.style.display = 'none';
                 pit2Presentation.style.display = 'none';
                 pit3Presentation.style.display = 'none';
+                futurePlanPresentation.style.display = 'none';
                 document.title = "SGX Minerals - Mining Operations";
                 
                 // Pause all videos when going back
