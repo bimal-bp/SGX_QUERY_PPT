@@ -1,135 +1,621 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SGX Minerals</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #333;
-      text-align: center;
-    }
-    header {
-      background: #2e3b4e;
-      color: #fff;
-      padding: 20px;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 20px;
-      gap: 20px;
-    }
-    .product {
-      width: 200px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      overflow: hidden;
-    }
-    .product img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-    .product p {
-      margin: 10px 0;
-      font-weight: bold;
-    }
-    .enter-btn {
-      display: inline-block;
-      margin: 30px;
-      padding: 12px 25px;
-      font-size: 18px;
-      color: #fff;
-      background: #0077cc;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .enter-btn:hover {
-      background: #005fa3;
-    }
-    .inside {
-      display: none;
-      margin: 40px;
-    }
-    .inside h2 {
-      margin-bottom: 20px;
-      font-size: 26px;
-    }
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .buttons a {
-      display: inline-block;
-      padding: 15px 25px;
-      font-size: 18px;
-      color: #fff;
-      background: #28a745;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .buttons a:hover {
-      background: #1e7e34;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGX Minerals - Mining Operations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #4cc9f0;
+            --company-color: #2a9d8f;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Home Page Styles */
+        .home-container {
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(26, 26, 46, 0.85)), 
+                        url('https://github.com/bimal-bp/Query_ppt/blob/main/PIT-3-4-MAIN.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .home-logo {
+            height: 150px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+        
+        .home-title {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--company-color);
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .home-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--accent);
+            max-width: 800px;
+            line-height: 1.5;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-btn {
+            background: var(--company-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Presentation Styles */
+        .presentation-container {
+            width: 100vw;
+            min-height: 100vh;
+            padding: 40px;
+            display: none;
+            background-color: var(--dark);
+        }
+        
+        .slide-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .slide-logo {
+            height: 60px;
+            margin-right: 20px;
+        }
+        
+        .slide-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--company-color);
+            text-align: center;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .update-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--company-color);
+            margin-bottom: 30px;
+        }
+        
+        .update-section h3 {
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .update-section p {
+            margin-bottom: 8px;
+            padding-left: 10px;
+            position: relative;
+        }
+        
+        .update-section p:before {
+            content: "•";
+            position: absolute;
+            left: -5px;
+            color: var(--company-color);
+        }
+        
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .media-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .media-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .media-item img, .media-item video {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .media-label {
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .modal-content img, .modal-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 5px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .back-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-top: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .back-btn:hover {
+            background: var(--primary);
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--company-color), transparent);
+            margin: 30px 0;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .home-container, .presentation-container {
+                padding: 20px;
+            }
+            
+            .home-title {
+                font-size: 2rem;
+            }
+            
+            .home-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .slide-title {
+                font-size: 1.5rem;
+            }
+            
+            .media-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .media-item img, .media-item video {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Landing Page -->
-  <header>SGX Minerals</header>
-  <section id="landing">
-    <div class="products">
-      <div class="product">
-        <img src="https://via.placeholder.com/200x150?text=10mm" alt="10mm">
-        <p>10 mm</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/200x150?text=20mm" alt="20mm">
-        <p>20 mm</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/200x150?text=V+Sand" alt="V Sand">
-        <p>V Sand</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/200x150?text=40mm+R+Sand" alt="40mm R Sand">
-        <p>40 mm R Sand</p>
-      </div>
+    <!-- Home Page Container -->
+    <div class="home-container" id="homePage">
+        <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="SGX Minerals Logo" class="home-logo">
+        <h1 class="home-title">SGX Minerals Pvt Ltd</h1>
+        <h2 class="home-subtitle">9 Ha Quarry Presentation</h2>
+        
+        <div class="nav-buttons">
+            <a href="#" class="nav-btn" id="pit1Btn">Pit 1 Status</a>
+            <a href="#" class="nav-btn" id="pit2Btn">Pit 2 Status</a>
+            <a href="#" class="nav-btn" id="pit3Btn">Pit 3 Status</a>
+            <a href="#" class="nav-btn" id="futurePlanBtn">Future Plans</a>
+        </div>
     </div>
-    <a href="#" class="enter-btn" onclick="showInside()">Enter</a>
-  </section>
-
-  <!-- Inside Page -->
-  <section id="inside" class="inside">
-    <h2>Select Module</h2>
-    <div class="buttons">
-      <a href="https://bimal-bp.github.io/Quarry_ppt/" target="_blank">Quarry</a>
-      <a href="https://bimal-bp.github.io/Equipement_Mis_report/" target="_blank">Equipment</a>
-      <a href="https://bimal-bp.github.io/Dispatch_WeighBridge_Transport" target="_blank">Sell</a>
-      <a href="https://bimal-bp.github.io/Dispatch_WeighBridge_Transport" target="_blank">Dispatch</a>
+    
+    <!-- Pit 1 Presentation -->
+    <div class="presentation-container" id="pit1Presentation">
+        <div class="content-container">
+            <div class="slide-header">
+                <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
+                <h1 class="slide-title">PIT 1 - Current Status & Updates</h1>
+            </div>
+            
+            <div class="update-section">
+                <h3>PIT-1 Details</h3>
+                <p> Length- 20 meters, Width- 16 meters , Height- 6 meters </p>
+                <p>Pit-1 previous measurement – 17 x 11 x 5</p>
+                <p>Present measurement – 20 x 16 x 6</p>
+                <p>Pit-1 is mixed with morrum; it is not used on a regular basis.</p>
+                <p>Future plan – Will use on a priority basis.</p>
+            </div>
+            
+            <hr class="section-divider">
+            
+            <h3>Media Documentation</h3>
+            <div class="media-gallery">
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/pit%201%20april%20image%20.jpg?raw=true" alt="Pit 1 Previous View 1">
+                    <div class="media-label">April - 25 PIT-1 image </div>
+                </div>
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT-1-measure.jpg?raw=true" alt="Pit 1 Previous View 2">
+                    <div class="media-label">Measurement PIT-1 image </div>
+                </div>
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/pit1-1.jpg?raw=true" alt="Pit 1 Current View 1">
+                    <div class="media-label">Current PIT-1 image (July 2025)</div>
+                </div>
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/pit-1-22.jpg?raw=true" alt="Pit 1 Current View 2">
+                    <div class="media-label">Current PIT-1 image (July 2025)</div>
+                </div>
+                <div class="media-item">
+                    <video controls>
+                        <source src="https://github.com/bimal-bp/Query_ppt/blob/main/pit-1-2.mp4?raw=true" type="video/mp4">
+                    </video>
+                    <div class="media-label"> PIT-1 video (July 2025)</div>
+                </div>
+                <div class="media-item">
+                    <video controls>
+                        <source src="https://github.com/bimal-bp/Query_ppt/blob/main/pit-1-3.mp4?raw=true" type="video/mp4">
+                    </video>
+                    <div class="media-label">PIT-1 video (July 2025)</div>
+                </div>
+            </div>
+            
+            <button class="back-btn">Back to Dashboard</button>
+        </div>
     </div>
-  </section>
+    
+    <!-- Pit 2 Presentation -->
+    <div class="presentation-container" id="pit2Presentation">
+        <div class="content-container">
+            <div class="slide-header">
+                <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
+                <h1 class="slide-title">PIT 2 - Current Status & Updates</h1>
+            </div>
+            
+            <div class="update-section">
+                <h3>PIT-2 Details</h3>
+                <p>Length – 95 meters, Width – 16 meters, Height – 15 meters</p>
+            </div>
+            
+            <hr class="section-divider">
+            
+            <h3>Media Documentation</h3>
+            <div class="media-gallery">
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT-2-APRIL%20IMAGE%202.jpg?raw=true" alt="Pit 2 Previous View 1">
+                    <div class="media-label">April Image- PIT 2</div>
+                </div>
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT-2%20APRIL%20image.jpg?raw=true" alt="Pit 2 Previous View 2">
+                    <div class="media-label">April Image- PIT 2</div>
+                </div>
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT-2-3.jpg?raw=true" alt="Pit 2 Current View 1">
+                    <div class="media-label">Current PIT-2 image (July 2025)</div>
+                </div>
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT2-4.jpg?raw=true" alt="Pit 2 Current View 2">
+                    <div class="media-label">Current PIT-2 video (July 2025)</div>
+                </div>
+                <div class="media-item">
+                    <video controls>
+                        <source src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT-2-1.mp4?raw=true" type="video/mp4">
+                    </video>
+                    <div class="media-label">Current PIT-2 video (July 2025)</div>
+                </div>
+                <div class="media-item">
+                    <video controls>
+                        <source src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT-2-2.mp4?raw=true" type="video/mp4">
+                    </video>
+                    <div class="media-label">Ore Deposit Analysis</div>
+                </div>
+            </div>
+            
+            <button class="back-btn">Back to Dashboard</button>
+        </div>
+    </div>
+    
+    <!-- Pit 3 Presentation -->
+    <div class="presentation-container" id="pit3Presentation">
+        <div class="content-container">
+            <div class="slide-header">
+                <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
+                <h1 class="slide-title">PIT 3 - Current Status & Updates</h1>
+            </div>
+            
+            <div class="update-section">
+                <h3>PIT-3 Details</h3>
+                <p>Length – 95 meters, Width – 65 meters, Height – 20 meters</p>
+            </div>
+            
+            <hr class="section-divider">
+            
+            <h3>Media Documentation</h3>
+            <div class="media-gallery">
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/pit-3-April.jpg?raw=true" alt="Pit 3 Previous View 1">
+                    <div class="media-label">PIT -3 image ( April  2025)</div>
+                </div>
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/may-pit3.jpg?raw=true" alt="Pit 3 Previous View 2">
+                    <div class="media-label">PIT -3 image ( May  2025)</div>
+                </div>
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT-3-4-MAIN.jpg?raw=true" alt="Pit 3 Current View 1">
+                    <div class="media-label">Current PIT -3 image (July 2025)</div>
+                </div>
+                <div class="media-item">
+                    <img src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT3-2.jpg?raw=true" alt="Pit 3 Current View 2">
+                    <div class="media-label">Current PIT -3 image (July 2025)</div>
+                </div>
+                <div class="media-item">
+                    <video controls>
+                        <source src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT-3-VDO-1.mp4?raw=true" type="video/mp4">
+                    </video>
+                    <div class="media-label">PIT -3 Video (July 2025)</div>
+                </div>
+                <div class="media-item">
+                    <video controls>
+                        <source src="https://github.com/bimal-bp/Query_ppt/blob/main/PIT-3-VDO-2.mp4?raw=true" type="video/mp4">
+                    </video>
+                    <div class="media-label">PIT -3 Video (July 2025)</div>
+                </div>
+            </div>
+            
+            <button class="back-btn">Back to Dashboard</button>
+        </div>
+    </div>
+    
+      <!-- Future Plans Presentation -->
+    <div class="presentation-container" id="futurePlanPresentation">
+        <div class="content-container">
+            <div class="slide-header">
+                <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
+                <h1 class="slide-title">Future Plans & Strategic Roadmap</h1>
+            </div>
+            
+            <div class="update-section">
+                <h3>Previous Month Details</h3>
+                <p>------------------------------------</p>
 
-  <script>
-    function showInside() {
-      document.getElementById("landing").style.display = "none";
-      document.getElementById("inside").style.display = "block";
-    }
-  </script>
+            </div>
+            
+            <div class="update-section">
+                <h3>Operational Improvements</h3>
+                <p>------------------------------------</p>
 
+            </div>
+            
+            <div class="update-section">
+                <h3>Expansion Strategy</h3>
+                <p>------------------------------------</p>
+  
+            </div>
+            
+            <hr class="section-divider">
+
+            
+            <button class="back-btn">Back to Dashboard</button>
+        </div>
+    </div>
+    
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="expandedImage" src="" alt="">
+        </div>
+    </div>
+    
+    <script>
+        // Navigation between home and presentations
+        const homePage = document.getElementById('homePage');
+        const pit1Btn = document.getElementById('pit1Btn');
+        const pit2Btn = document.getElementById('pit2Btn');
+        const pit3Btn = document.getElementById('pit3Btn');
+        const futurePlanBtn = document.getElementById('futurePlanBtn');
+        const pit1Presentation = document.getElementById('pit1Presentation');
+        const pit2Presentation = document.getElementById('pit2Presentation');
+        const pit3Presentation = document.getElementById('pit3Presentation');
+        const futurePlanPresentation = document.getElementById('futurePlanPresentation');
+        const backBtns = document.querySelectorAll('.back-btn');
+        
+        // Show presentation function
+        function showPresentation(presentation) {
+            homePage.style.display = 'none';
+            pit1Presentation.style.display = 'none';
+            pit2Presentation.style.display = 'none';
+            pit3Presentation.style.display = 'none';
+            futurePlanPresentation.style.display = 'none';
+            presentation.style.display = 'block';
+            document.title = "SGX Minerals - " + presentation.querySelector('.slide-title').textContent;
+            window.scrollTo(0, 0);
+        }
+        
+        // Event listeners
+        pit1Btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPresentation(pit1Presentation);
+        });
+        
+        pit2Btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPresentation(pit2Presentation);
+        });
+        
+        pit3Btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPresentation(pit3Presentation);
+        });
+        
+        futurePlanBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPresentation(futurePlanPresentation);
+        });
+        
+        backBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                homePage.style.display = 'flex';
+                pit1Presentation.style.display = 'none';
+                pit2Presentation.style.display = 'none';
+                pit3Presentation.style.display = 'none';
+                futurePlanPresentation.style.display = 'none';
+                document.title = "SGX Minerals - Mining Operations";
+                
+                // Pause all videos when going back
+                document.querySelectorAll('video').forEach(video => {
+                    video.pause();
+                });
+            });
+        });
+        
+        // Image modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('expandedImage');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Get all media items and add click event
+        document.querySelectorAll('.media-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        // Close when clicking outside image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Auto-pause videos when scrolling out of view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (!entry.target.paused) entry.target.play();
+                } else {
+                    entry.target.pause();
+                }
+            });
+        }, {threshold: 0.5});
+        
+        document.querySelectorAll('video').forEach(video => {
+            observer.observe(video);
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
