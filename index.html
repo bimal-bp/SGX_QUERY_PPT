@@ -26,6 +26,7 @@
             background-color: #f0f4f8;
             color: #333;
             overflow-x: hidden;
+            transition: background-color 0.5s ease;
         }
         
         /* Home Page Styles */
@@ -70,6 +71,7 @@
             color: var(--company-color);
             margin-bottom: 15px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            transition: color 0.5s ease;
         }
         
         .home-subtitle {
@@ -176,6 +178,7 @@
             font-weight: 600;
             color: var(--company-color);
             text-align: center;
+            transition: color 0.5s ease;
         }
         
         .content-container {
@@ -194,12 +197,14 @@
             border-left: 4px solid var(--company-color);
             margin-bottom: 30px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: border-color 0.5s ease;
         }
         
         .update-section h3 {
             margin-bottom: 15px;
             color: var(--company-color);
             font-size: 1.3rem;
+            transition: color 0.5s ease;
         }
         
         .update-section p {
@@ -215,6 +220,7 @@
             left: -5px;
             color: var(--company-color);
             font-weight: bold;
+            transition: color 0.5s ease;
         }
         
         .media-gallery {
@@ -792,8 +798,9 @@
         ];
         
         let currentColorScheme = 0;
+        let autoColorInterval;
         
-        colorChanger.addEventListener('click', function() {
+        function changeColorScheme() {
             // Cycle through color schemes
             currentColorScheme = (currentColorScheme + 1) % colorSchemes.length;
             const scheme = colorSchemes[currentColorScheme];
@@ -802,7 +809,19 @@
             document.documentElement.style.setProperty('--primary', scheme.primary);
             document.documentElement.style.setProperty('--secondary', scheme.secondary);
             document.documentElement.style.setProperty('--company-color', scheme.company);
+        }
+        
+        // Manual color change
+        colorChanger.addEventListener('click', function() {
+            // Reset the interval when manually changing colors
+            clearInterval(autoColorInterval);
+            changeColorScheme();
+            // Restart the auto color change after 5 seconds
+            autoColorInterval = setInterval(changeColorScheme, 5000);
         });
+        
+        // Start automatic color changing every 5 seconds
+        autoColorInterval = setInterval(changeColorScheme, 5000);
     </script>
 </body>
 </html>
