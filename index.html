@@ -110,6 +110,29 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
+        /* Color changer button */
+        .color-changer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .color-changer svg {
+            width: 24px;
+            height: 24px;
+        }
+        
         /* Presentation Styles */
         .presentation-container {
             width: 100vw;
@@ -276,7 +299,7 @@
         .back-btn {
             background: var(--company-color);
             color: white;
-            border: none;
+            border: noe;
             padding: 12px 24px;
             font-size: 1rem;
             border-radius: 5px;
@@ -340,16 +363,31 @@
     </style>
 </head>
 <body>
+    <!-- Color Changer Button -->
+    <button class="color-changer" id="colorChanger">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.5 12.5C8.32843 12.5 9 11.8284 9 11C9 10.1716 8.32843 9.5 7.5 9.5C6.67157 9.5 6 10.1716 6 11C6 11.8284 6.67157 12.5 7.5 12.5Z" fill="currentColor"/>
+            <path d="M12.5 9.5C13.3284 9.5 14 8.82843 14 8C14 7.17157 13.3284 6.5 12.5 6.5C11.6716 6.5 11 7.17157 11 8C11 8.82843 11.6716 9.5 12.5 9.5Z" fill="currentColor"/>
+            <path d="M16.5 12.5C17.3284 12.5 18 11.8284 18 11C18 10.1716 17.3284 9.5 16.5 9.5C15.6716 9.5 15 10.1716 15 11C15 11.8284 15.6716 12.5 16.5 12.5Z" fill="currentColor"/>
+            <path d="M8 16C8.82843 16 9.5 15.3284 9.5 14.5C9.5 13.6716 8.82843 13 8 13C7.17157 13 6.5 13.6716 6.5 14.5C6.5 15.3284 7.17157 16 8 16Z" fill="currentColor"/>
+            <path d="M12 16.5C12.8284 16.5 13.5 15.8284 13.5 15C13.5 14.1716 12.8284 13.5 12 13.5C11.1716 13.5 10.5 14.1716 10.5 15C10.5 15.8284 11.1716 16.5 12 16.5Z" fill="currentColor"/>
+            <path d="M17 15C17 15.8284 16.3284 16.5 15.5 16.5C14.6716 16.5 14 15.8284 14 15C14 14.1716 14.6716 13.5 15.5 13.5C16.3284 13.5 17 14.1716 17 15Z" fill="currentColor"/>
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+    </button>
+    
     <!-- Home Page Container -->
     <div class="home-container" id="homePage">
         <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="SGX Minerals Logo" class="home-logo">
         <h1 class="home-title">SGX Minerals Pvt Ltd</h1>
-        <h2 class="home-subtitle">9 Ha Quarry Presentation</h2>
+        <h2 class="home-subtitle">Quarry Presentation</h2>
         
         <div class="nav-buttons">
-            <a href="#" class="nav-btn" id="pit1Btn">Pit 1 Status</a>
-            <a href="#" class="nav-btn" id="pit2Btn">Pit 2 Status</a>
-            <a href="#" class="nav-btn" id="pit3Btn">Pit 3 Status</a>
+            <a href="#" class="nav-btn" id="pit1Btn">9 Ha Pit 1 Status</a>
+            <a href="#" class="nav-btn" id="pit2Btn">9 Ha Pit 2 Status</a>
+            <a href="#" class="nav-btn" id="pit3Btn">9 Ha Pit 3 Status</a>
+            <a href="#" class="nav-btn" id="ha33Btn">3.3 Ha Status</a>
+            <a href="#" class="nav-btn" id="ha3Btn">3 Ha Status</a>
             <a href="#" class="nav-btn" id="futurePlanBtn">Future Plans</a>
         </div>
     </div>
@@ -359,7 +397,7 @@
         <div class="content-container">
             <div class="slide-header">
                 <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
-                <h1 class="slide-title">PIT 1 - Current Status & Updates</h1>
+                <h1 class="slide-title">9 Ha PIT 1 - Current Status & Updates</h1>
             </div>
             
             <div class="update-section">
@@ -414,7 +452,7 @@
         <div class="content-container">
             <div class="slide-header">
                 <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
-                <h1 class="slide-title">PIT 2 - Current Status & Updates</h1>
+                <h1 class="slide-title">9 Ha PIT 2 - Current Status & Updates</h1>
             </div>
             
             <div class="update-section">
@@ -465,7 +503,7 @@
         <div class="content-container">
             <div class="slide-header">
                 <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
-                <h1 class="slide-title">PIT 3 - Current Status & Updates</h1>
+                <h1 class="slide-title">9 Ha PIT 3 - Current Status & Updates</h1>
             </div>
             
             <div class="update-section">
@@ -511,7 +549,73 @@
         </div>
     </div>
     
-      <!-- Future Plans Presentation -->
+    <!-- 3.3 Ha Presentation -->
+    <div class="presentation-container" id="ha33Presentation">
+        <div class="content-container">
+            <div class="slide-header">
+                <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
+                <h1 class="slide-title">3.3 Ha - Current Status & Updates</h1>
+            </div>
+            
+            <div class="update-section">
+                <h3>3.3 Ha Details</h3>
+                <p>Detailed information about the 3.3 Ha quarry will be added here.</p>
+                <p>Current status and measurements will be updated regularly.</p>
+                <p>Future plans for this area will be documented.</p>
+            </div>
+            
+            <hr class="section-divider">
+            
+            <h3>Media Documentation</h3>
+            <div class="media-gallery">
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/600x400/2a9d8f/ffffff?text=3.3+Ha+Image+1" alt="3.3 Ha View 1">
+                    <div class="media-label">3.3 Ha image - Coming soon</div>
+                </div>
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/600x400/2a9d8f/ffffff?text=3.3+Ha+Image+2" alt="3.3 Ha View 2">
+                    <div class="media-label">3.3 Ha image - Coming soon</div>
+                </div>
+            </div>
+            
+            <button class="back-btn">Back to Dashboard</button>
+        </div>
+    </div>
+    
+    <!-- 3 Ha Presentation -->
+    <div class="presentation-container" id="ha3Presentation">
+        <div class="content-container">
+            <div class="slide-header">
+                <img src="https://github.com/bimal-bp/Query_ppt/blob/main/Screenshot%202025-07-29%20104153.png?raw=true" alt="Logo" class="slide-logo">
+                <h1 class="slide-title">3 Ha - Current Status & Updates</h1>
+            </div>
+            
+            <div class="update-section">
+                <h3>3 Ha Details</h3>
+                <p>Detailed information about the 3 Ha quarry will be added here.</p>
+                <p>Current status and measurements will be updated regularly.</p>
+                <p>Future plans for this area will be documented.</p>
+            </div>
+            
+            <hr class="section-divider">
+            
+            <h3>Media Documentation</h3>
+            <div class="media-gallery">
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/600x400/2a9d8f/ffffff?text=3+Ha+Image+1" alt="3 Ha View 1">
+                    <div class="media-label">3 Ha image - Coming soon</div>
+                </div>
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/600x400/2a9d8f/ffffff?text=3+Ha+Image+2" alt="3 Ha View 2">
+                    <div class="media-label">3 Ha image - Coming soon</div>
+                </div>
+            </div>
+            
+            <button class="back-btn">Back to Dashboard</button>
+        </div>
+    </div>
+    
+    <!-- Future Plans Presentation -->
     <div class="presentation-container" id="futurePlanPresentation">
         <div class="content-container">
             <div class="slide-header">
@@ -522,23 +626,19 @@
             <div class="update-section">
                 <h3>Previous Month Details</h3>
                 <p>------------------------------------</p>
-
             </div>
             
             <div class="update-section">
                 <h3>Operational Improvements</h3>
                 <p>------------------------------------</p>
-
             </div>
             
             <div class="update-section">
                 <h3>Expansion Strategy</h3>
                 <p>------------------------------------</p>
-  
             </div>
             
             <hr class="section-divider">
-
             
             <button class="back-btn">Back to Dashboard</button>
         </div>
@@ -558,10 +658,14 @@
         const pit1Btn = document.getElementById('pit1Btn');
         const pit2Btn = document.getElementById('pit2Btn');
         const pit3Btn = document.getElementById('pit3Btn');
+        const ha33Btn = document.getElementById('ha33Btn');
+        const ha3Btn = document.getElementById('ha3Btn');
         const futurePlanBtn = document.getElementById('futurePlanBtn');
         const pit1Presentation = document.getElementById('pit1Presentation');
         const pit2Presentation = document.getElementById('pit2Presentation');
         const pit3Presentation = document.getElementById('pit3Presentation');
+        const ha33Presentation = document.getElementById('ha33Presentation');
+        const ha3Presentation = document.getElementById('ha3Presentation');
         const futurePlanPresentation = document.getElementById('futurePlanPresentation');
         const backBtns = document.querySelectorAll('.back-btn');
         
@@ -571,6 +675,8 @@
             pit1Presentation.style.display = 'none';
             pit2Presentation.style.display = 'none';
             pit3Presentation.style.display = 'none';
+            ha33Presentation.style.display = 'none';
+            ha3Presentation.style.display = 'none';
             futurePlanPresentation.style.display = 'none';
             presentation.style.display = 'block';
             document.title = "SGX Minerals - " + presentation.querySelector('.slide-title').textContent;
@@ -593,6 +699,16 @@
             showPresentation(pit3Presentation);
         });
         
+        ha33Btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPresentation(ha33Presentation);
+        });
+        
+        ha3Btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPresentation(ha3Presentation);
+        });
+        
         futurePlanBtn.addEventListener('click', (e) => {
             e.preventDefault();
             showPresentation(futurePlanPresentation);
@@ -604,6 +720,8 @@
                 pit1Presentation.style.display = 'none';
                 pit2Presentation.style.display = 'none';
                 pit3Presentation.style.display = 'none';
+                ha33Presentation.style.display = 'none';
+                ha3Presentation.style.display = 'none';
                 futurePlanPresentation.style.display = 'none';
                 document.title = "SGX Minerals - Mining Operations";
                 
@@ -660,6 +778,51 @@
             if (e.key === 'Escape') {
                 modal.style.display = 'none';
             }
+        });
+        
+        // Color changer functionality
+        const colorChanger = document.getElementById('colorChanger');
+        const colorSchemes = [
+            { primary: '#4361ee', secondary: '#3f37c9', company: '#2a9d8f' }, // Original
+            { primary: '#e76f51', secondary: '#d65c45', company: '#2a9d8f' }, // Coral
+            { primary: '#3a86ff', secondary: '#2667cc', company: '#2a9d8f' }, // Blue
+            { primary: '#8338ec', secondary: '#6a2fc6', company: '#2a9d8f' }, // Purple
+            { primary: '#fb5607', secondary: '#d34606', company: '#2a9d8f' }, // Orange
+            { primary: '#3a0ca3', secondary: '#2d0883', company: '#2a9d8f' }  // Deep Blue
+        ];
+        
+        let currentColorScheme = 0;
+        
+        colorChanger.addEventListener('click', function() {
+            // Cycle through color schemes
+            currentColorScheme = (currentColorScheme + 1) % colorSchemes.length;
+            const scheme = colorSchemes[currentColorScheme];
+            
+            // Update CSS variables
+            document.documentElement.style.setProperty('--primary', scheme.primary);
+            document.documentElement.style.setProperty('--secondary', scheme.secondary);
+            document.documentElement.style.setProperty('--company-color', scheme.company);
+            
+            // Update all elements with company color
+            document.querySelectorAll('.nav-btn, .back-btn').forEach(btn => {
+                btn.style.background = scheme.company;
+            });
+            
+            document.querySelectorAll('.nav-btn:hover, .back-btn:hover').forEach(btn => {
+                btn.style.background = scheme.secondary;
+            });
+            
+            document.querySelectorAll('.update-section').forEach(section => {
+                section.style.borderLeftColor = scheme.company;
+            });
+            
+            document.querySelectorAll('.update-section h3').forEach(heading => {
+                heading.style.color = scheme.company;
+            });
+            
+            document.querySelectorAll('.update-section p:before').forEach(bullet => {
+                bullet.style.color = scheme.company;
+            });
         });
     </script>
 </body>
